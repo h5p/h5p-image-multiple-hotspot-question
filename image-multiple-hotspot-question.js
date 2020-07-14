@@ -130,9 +130,6 @@ H5P.ImageMultipleHotspotQuestion = (function ($, Question) {
 
     this.$wrapper = $('<div>', {
       'class': 'image-hotspot-question ' + this.contentId
-    }).ready(function () {
-      var imageHeight = self.$wrapper.width() * (self.imageSettings.height / self.imageSettings.width);
-      self.$wrapper.css('height', imageHeight + 'px');
     });
 
     this.$imageWrapper = $('<div>', {
@@ -147,7 +144,7 @@ H5P.ImageMultipleHotspotQuestion = (function ($, Question) {
 
     this.$img = $('<img>', {
       'class': 'hotspot-image',
-      'src': H5P.getPath(this.imageSettings.path, this.contentId)
+      'src': (this.imageSettings.path !== '') ? H5P.getPath(this.imageSettings.path, this.contentId) : ''
     });
 
     // Resize image once loaded
@@ -414,46 +411,8 @@ H5P.ImageMultipleHotspotQuestion = (function ($, Question) {
    * Resize image and wrapper
    */
    ImageMultipleHotspotQuestion.prototype.resize = function () {
-    this.resizeImage();
     this.resizeHotspotFeedback();
     this.resizeCorrectHotspotFeedback();
-  };
-
-  /**
-   * Resize image to fit parent width.
-   */
-   ImageMultipleHotspotQuestion.prototype.resizeImage = function () {
-    var self = this;
-
-    // Check that question has been attached
-    if (!(this.$wrapper && this.$img)) {
-      return;
-    }
-
-    // Resize image to fit new container width.
-    var parentWidth = this.$wrapper.width();
-    this.$img.width(parentWidth);
-
-    // Find required height for new width.
-    var naturalWidth = this.$img.get(0).naturalWidth;
-    var naturalHeight = this.$img.get(0).naturalHeight;
-    var imageRatio = naturalHeight / naturalWidth;
-    var neededHeight = -1;
-    if (parentWidth < naturalWidth) {
-      // Scale image down
-      neededHeight = parentWidth * imageRatio;
-    } else {
-      // Scale image to natural size
-      this.$img.width(naturalWidth);
-      neededHeight = naturalHeight;
-    }
-
-    if (neededHeight !== -1) {
-      this.$img.height(neededHeight);
-
-      // Resize wrapper to match image.
-      self.$wrapper.height(neededHeight);
-    }
   };
 
   /**
