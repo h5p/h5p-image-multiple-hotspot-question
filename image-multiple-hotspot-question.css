@@ -159,3 +159,43 @@
     opacity: 1;
   }
 }
+
+
+/* Intro */
+
+.h5p-image-hotspot-question .h5p-question-introduction {
+  margin: 0;
+}
+.h5p-image-hotspot-question .h5p-question-content {
+  margin-top: 0;
+}
+.h5p-image-hotspot-question-intro-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%
+}
+
+.h5p-image-hotspot-question-intro {
+  color: #000000;
+  font-size: 1.125em;
+  line-height: 1;
+  padding: 1em;
+}
+
+.h5p-image-hotspot-question-intro.hasAudio {
+  padding: 1em 1em 1em 0;
+}
+
+/* Audio button */
+.h5p-image-hotspot-question-audio-wrapper {
+  flex-shrink: 0;
+  height: 2em;
+  padding: 1em;
+  width: 2em;
+}
+
+.h5p-image-hotspot-question-audio-wrapper .h5p-audio-minimal-button {
+  font-size: 1em;
+  height: 100%;
+  width: 100%;
+}
