@@ -46,6 +46,15 @@
             "optional": true
           },
           {
+            "label": "Audio for task description",
+            "name": "taskDescriptionAudio",
+            "type": "audio",
+            "description": "Add an audio version for the task description.",
+            "importance": "medium",
+            "optional": true,
+            "widgetExtensions": ["AudioRecorder"]
+          },
+          {
             "name": "hotspotName",
             "type": "text",
             "label": "Hotspot Name",
@@ -67,6 +76,7 @@
             "label": "Hotspot",
             "importance": "high",
             "entity": "Hotspot",
+            "widget": "none",
             "field": {
               "type": "group",
               "label": "Hotspot",
@@ -92,6 +102,15 @@
                       "importance": "low",
                       "placeholder": "Correct, you have found",
                       "optional": true
+                    },
+                    {
+                      "label": "Audio",
+                      "name": "audio",
+                      "type": "audio",
+                      "description": "Optional audio to play when clicked.",
+                      "importance": "low",
+                      "optional": true,
+                      "widgetExtensions": ["AudioRecorder"]
                     }
                   ]
                 },
@@ -148,6 +167,37 @@
             "optional": true
           }
         ]
+      }
+    ]
+  },
+  {
+    "label": "Localization",
+    "importance": "low",
+    "name": "l10n",
+    "type": "group",
+    "common": true,
+    "fields": [
+      {
+        "label": "Play",
+        "importance": "low",
+        "name": "play",
+        "type": "text",
+        "default": "Play"
+      },
+      {
+        "label": "Pause",
+        "importance": "low",
+        "name": "pause",
+        "type": "text",
+        "default": "Pause"
+      },
+      {
+        "name": "audioNotSupported",
+        "type": "text",
+        "label": "Audio not supported message",
+        "importance": "low",
+        "common": true,
+        "default": "Your browser does not support this audio"
       }
     ]
   }
